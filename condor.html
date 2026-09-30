@@ -1,0 +1,93 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta http-equiv="refresh" content="300"><meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex"><!-- data-signature: 5a8eb14479417231 --><title>SPX Condor</title><style>
+:root { color-scheme: dark; }
+* { box-sizing: border-box; }
+body { background:#0d0f12; color:#e6e6e6; margin:0; padding:22px;
+       font-family:-apple-system,Segoe UI,Roboto,sans-serif; }
+.top { display:flex; align-items:baseline; gap:12px; margin:0 2px 16px; flex-wrap:wrap; }
+h1 { font-size:15px; letter-spacing:.6px; margin:0; color:#f0f0f0; font-weight:800; }
+h1 .b { color:#e08a3c; }
+h2 { font-size:13px; color:#9aa0a6; margin:18px 2px 6px; }
+.meta { color:#8b9096; font-size:12px; }
+table { width:100%; border-collapse:collapse; font-size:13px; }
+th { text-align:left; color:#7f858c; font-weight:600; padding:6px 10px;
+     border-bottom:1px solid #23262d; }
+td { padding:7px 10px; border-bottom:1px solid #1b1e24; color:#c3c8ce; }
+td.tk { font-weight:700; color:#e6e6e6; }
+.qty { text-align:right; font-variant-numeric:tabular-nums; white-space:nowrap; }
+td.dim { color:#7f858c; }
+td.stale { color:#e08a3c; font-weight:600; }
+.up { color:#3fb56b; } .down { color:#d9605a; }
+.chart { margin:2px 0 4px; }
+.chart svg { width:100%; height:auto; display:block; }
+.axis { fill:#7f858c; font-size:10px; }
+.zero { stroke:#33373f; stroke-width:1; stroke-dasharray:3 3; }
+.eqline { fill:none; stroke-width:2; }
+.endlbl { font-size:11px; font-weight:700; }
+.regime { display:flex; align-items:baseline; gap:10px; flex-wrap:wrap;
+          padding:9px 12px; margin:0 2px 16px; border-radius:6px;
+          border:1px solid #23262d; background:#12151a; }
+.regime .tag { font-size:12px; font-weight:800; letter-spacing:.9px;
+               padding:2px 9px; border-radius:4px; }
+.regime.buy  .tag { background:#14331f; color:#4cc47a; }
+.regime.sell .tag { background:#35191a; color:#e06f68; }
+.regime.unk  .tag { background:#24262b; color:#9aa0a6; }
+.regime .hdr { font-size:13px; font-weight:600; color:#e6e6e6; }
+.regime .sub { font-size:12px; color:#8b9096; }
+
+.viz { --surface:#0d0f12; --ink:#e6e6e6; --ink-2:#c3c8ce; --muted:#7f858c;
+       --grid:#1f232a; --axis:#2c3038; --spx:#3987e5; --stop:#d95926;
+       --target:#199e70; --strike:#6b7078; --good:#0ca30c; --bad:#e66767; }
+.tiles { display:flex; flex-wrap:wrap; gap:10px; margin:0 2px 18px; }
+.tile { flex:1 1 130px; background:#12151a; border:1px solid #1f232a;
+        border-radius:6px; padding:10px 12px; }
+.tile .v { font-size:22px; font-weight:800; color:var(--ink);
+           font-variant-numeric:tabular-nums; }
+.tile .l { font-size:11px; color:var(--muted); letter-spacing:.4px;
+           text-transform:uppercase; margin-top:2px; }
+.panel { background:#12151a; border:1px solid #1f232a; border-radius:6px;
+         padding:12px 12px 6px; margin:0 2px 18px; position:relative; }
+.panel h2 { margin:0 0 4px; }
+.legend { display:flex; flex-wrap:wrap; gap:14px; font-size:12px;
+          color:var(--ink-2); margin:4px 0 6px; }
+.sw { display:inline-block; width:18px; height:0; vertical-align:middle;
+      margin-right:6px; border-top:2px solid; }
+.sw.box { height:10px; border:1px solid var(--target);
+          background:rgba(25,158,112,.18); }
+svg.chart { width:100%; height:auto; display:block; }
+.tip { position:absolute; pointer-events:none; background:#0b0d10;
+       border:1px solid #2c3038; border-radius:4px; padding:6px 8px;
+       font-size:12px; color:var(--ink-2); line-height:1.45; display:none;
+       white-space:nowrap; z-index:2; }
+.tip b { color:var(--ink); }
+.scroll { overflow-x:auto; -webkit-overflow-scrolling:touch; }
+/* Keep chart text legible on a phone: scroll sideways rather than shrink an
+   11px label to 5px. Same for the table, whose cells must not wrap. */
+.scroll svg.chart { min-width:600px; }
+.days table { min-width:860px; }
+.days th, .days td { white-space:nowrap; }
+td.pos { color:var(--good); } td.neg { color:var(--bad); }
+.note { color:var(--muted); font-size:12px; line-height:1.55; margin:6px 2px 0; }
+</style></head><body><div style="margin:0 0 18px;padding:10px 12px;border:1px solid #33261f;border-left:3px solid #e08a3c;background:#17120e;border-radius:4px;color:#c3c8ce;font-size:12px;line-height:1.55"><strong style="color:#e08a3c">Simulated.</strong> A paper-trading research log. No broker order was placed, no money is at risk, and the fills are modelled, not executed. This is not investment advice, not an offer, and not a solicitation.<div style="margin-top:5px">A shadow-mode record of an SPX 0DTE iron condor strategy, built to calibrate its thresholds. Every fill is modelled from delayed quotes.</div><div style="margin-top:5px;color:#7f858c">Static snapshot published Sep 30, 2026 · 8:23 AM PT. Values do not change until the page is republished.</div></div><div class="viz"><div class="top"><h1>SPX <span class="b">0DTE</span> iron condor</h1><span class="meta">shadow mode · 1 days recorded</span></div><div class="tiles"><div class="tile"><div class="v">0 / 30</div><div class="l">traded days to calibration</div></div><div class="tile"><div class="v">–</div><div class="l">win rate</div></div><div class="tile"><div class="v">–</div><div class="l">total P&amp;L / contract</div></div><div class="tile"><div class="v">–</div><div class="l">average per trade</div></div><div class="tile"><div class="v">–</div><div class="l">median hold</div></div><div class="tile"><div class="v">1</div><div class="l">days not traded</div></div></div><p class="note">No shadow trade yet.</p><h2>Cumulative P&amp;L (per contract)</h2><p class="note">The cumulative P&amp;L chart appears after the second traded day.</p><h2>Every recorded day</h2><div class="scroll days"><table><tr><th>Date</th><th>Event</th><th>Signal</th><th>Strikes</th><th class='qty'>Credit</th><th class='qty'>IV/VIX</th><th>Exit</th><th class='qty'>P&amp;L</th><th class='qty'>OR/strad</th><th class='qty'>VIX1D/VIX</th><th>Note</th></tr><tr><td class='tk'>Tue Sep 29</td><td>Normal</td><td>07:06</td><td>–</td><td class='qty'>–</td><td class='qty'>–</td><td>–</td><td class='qty'>–</td><td class='qty'>–</td><td class='qty'>0.56</td><td class='dim'>no chain recorded at the signal</td></tr></table></div><p class="note">Shadow mode: the strategy runs on 15-minute-delayed CBOE and Yahoo data and journals what it would have done. Entries fill at the chain mid; the 0.5× target fills only when the cost to close at the ask reaches it; stops and the 12:30 time exit pay the ask. FOMC days are recorded but never traded. Fewer than 30 traded days is a description, not evidence.</p></div><script>
+(function(){
+  document.querySelectorAll('[data-hover]').forEach(function(panel){
+    var svg = panel.querySelector('svg'), tip = panel.querySelector('.tip'),
+        line = svg.querySelector('.xhair'), pts = JSON.parse(panel.dataset.hover);
+    function show(ev){
+      var r = svg.getBoundingClientRect(), vb = svg.viewBox.baseVal;
+      var x = (ev.clientX - r.left) * vb.width / r.width, best = null, bd = 1e9;
+      pts.forEach(function(p){ var d = Math.abs(p.x - x); if (d < bd) { bd = d; best = p; } });
+      if (!best) return;
+      if (line) { line.setAttribute('x1', best.x); line.setAttribute('x2', best.x);
+                  line.style.display = ''; }
+      tip.innerHTML = best.html; tip.style.display = 'block';
+      var px = best.x * r.width / vb.width, pr = panel.getBoundingClientRect();
+      var left = r.left - pr.left + px + 12;
+      if (left + tip.offsetWidth > pr.width) left = r.left - pr.left + px - tip.offsetWidth - 12;
+      tip.style.left = Math.max(4, left) + 'px'; tip.style.top = '40px';
+    }
+    function hide(){ tip.style.display = 'none'; if (line) line.style.display = 'none'; }
+    svg.addEventListener('mousemove', show); svg.addEventListener('mouseleave', hide);
+    svg.addEventListener('touchstart', function(e){ show(e.touches[0]); }, {passive:true});
+  });
+})();
+</script></body></html>
